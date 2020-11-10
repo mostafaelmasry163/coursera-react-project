@@ -1,8 +1,24 @@
 import React from 'react';
+import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
+import {Link} from 'react-router-dom';
 
 function Contactus(props){
     return(
         <div className="container">
+          <div className="row">
+            <Breadcrumb>
+              <BreadcrumbItem>
+                <Link to='/home'>Home</Link>
+              </BreadcrumbItem>
+              <BreadcrumbItem active>
+                Contact Us
+              </BreadcrumbItem>
+            </Breadcrumb>
+            <div className="col-12">
+             <h2 className="offset-5">Contact Us</h2>
+             <hr />
+            </div>
+          </div>
         <div className="row row-content">
         <div className="col-12">
           <h3>Location Information</h3>
@@ -32,7 +48,7 @@ function Contactus(props){
               role="button"
               href="mailto:confusion@food.net"
               className="btn btn-success"
-              ><i class="fa fa-envelope-o"></i> Email</a>
+              ><i className="fa fa-envelope-o"></i> Email</a>
           </div>
         </div>
       </div>
