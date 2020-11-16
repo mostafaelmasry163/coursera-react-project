@@ -25,7 +25,7 @@ class CommentForm extends Component {
 
     handleSubmit(values){
         this.toggleModal();
-        alert("Current State is: " +JSON.stringify(values))
+        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   render(){
@@ -39,7 +39,7 @@ class CommentForm extends Component {
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                 <div className="modal-header">
                     <h5 className="modal-title">Submit Comment</h5>
-                    <button type="button" className="ml-auto close">
+                    <button type="button" className="ml-auto close" onClick={this.toggleModal}>
                       &times;
                     </button>
                 </div>                   
@@ -119,7 +119,7 @@ class DishDetail extends Component{
         
     }
 
-    renderComments(comments){
+  renderComments(comments, addComment, dishId){
 
         if(comments===null) return(<div />)
 
@@ -127,7 +127,7 @@ class DishDetail extends Component{
             return(
                 <li key={com.id}>
                     <p>{com.comment}</p>
-            <p> -- {com.author}, &nbsp;
+                    <p> -- {com.author}, &nbsp;
                         {new Intl.DateTimeFormat("en-US", {
                             year: "numeric",
                             month: "long",
@@ -144,7 +144,7 @@ class DishDetail extends Component{
                 <ul className="list-unstyled">
                     {comments}
                 </ul>
-                <CommentForm />
+                <CommentForm dishId={dishId} addComment={addComment} />
             </div>
         );
     }
@@ -177,7 +177,7 @@ class DishDetail extends Component{
                             {this.renderDish(this.props.dish)}
                         </div>
                         <div className="col-12 col-md-5 m-1">
-                            {this.renderComments(this.props.comments)}
+                            {this.renderComments(this.props.comments, this.props.addComment, this.props.dish.id)}
                         </div>
                     </div>
                 </div>
