@@ -11,11 +11,11 @@ Demo Website of Ristorante developed during Coursera's Front-End Web Development
   
   1. Start the server using:
  
-  json-server --watch db.json -d 2000 -p 3001
+  `json-server --watch db.json -d 2000 -p 3001`
  
   2. Then open the browser and go to:
   
-  https://localhost:3001
+  `https://localhost:3001`
   
 ### For Development:
   
@@ -29,7 +29,7 @@ Demo Website of Ristorante developed during Coursera's Front-End Web Development
   
   `yarn start`
   
-   `npm start
+   `npm start`
   
 
 ## Acknoledgements
